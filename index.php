@@ -1,4 +1,9 @@
+
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include("conexion.php");
 session_start();
 
@@ -15,7 +20,7 @@ if (isset($_POST['login'])) {
         exit();
     }
 
-    $consulta = "SELECT contraseña FROM datos WHERE email = ?";
+    $consulta = "SELECT contrasena FROM datos WHERE email = ?";
     $stmt = mysqli_prepare($conex, $consulta);
 
     if (!$stmt) {
@@ -28,7 +33,7 @@ if (isset($_POST['login'])) {
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {
         $row = mysqli_fetch_assoc($resultado);
-        if ($password === $row['contraseña']) {
+        if ($password === $row['contrasena']) {
             $_SESSION['email'] = $email;
             header("Location: bienvenido.php");
             exit();

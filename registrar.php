@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include("conexion.php");
 
@@ -16,7 +19,7 @@ if (isset($_POST['register'])) {
             $password = trim($_POST['password']);
             $phone = trim($_POST['phone']);
             $fecha = date("Y-m-d");
-            $consulta = "INSERT INTO datos(nombre, apellidos, email, `contraseña`, telefono, fecha)
+            $consulta = "INSERT INTO datos(nombre, apellidos, email, `contrasena`, telefono, fecha)
                 VALUES('$name','$apellidos','$email','$password','$phone','$fecha')"; 
             $resultado = mysqli_query($conex, $consulta);
             if ($resultado) {
